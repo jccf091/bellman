@@ -11,9 +11,9 @@
 //! [`EvaluationDomain`]: crate::domain::EvaluationDomain
 //! [Groth16]: https://eprint.iacr.org/2016/260
 
+use blstrs::Engine;
 use ff::{Field, PrimeField, ScalarEngine};
 use groupy::CurveProjective;
-use blstrs::Engine;
 
 use super::multicore::Worker;
 use super::SynthesisError;
@@ -588,7 +588,7 @@ mod tests {
         let _ = env_logger::try_init();
         gpu::dump_device_list();
 
-        use blstrs::{Bls12, Fr};
+        use blstrs::{Bls12, Scalar as Fr};
         use std::time::Instant;
         let rng = &mut rand::thread_rng();
 
