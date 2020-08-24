@@ -1,7 +1,17 @@
 use log::{info, warn};
-use rust_gpu_tools::*;
+use rust_gpu_tools::opencl;
 use std::collections::HashMap;
 use std::env;
+
+pub fn get_devices() -> Vec<opencl::Device> {
+    opencl::Device::all().unwrap_or_default()
+}
+
+#[test]
+pub fn test_get_devices() {
+    let _ = env_logger::try_init();
+    get_devices();
+}
 
 lazy_static::lazy_static! {
     static ref CORE_COUNTS: HashMap<String, usize> = {

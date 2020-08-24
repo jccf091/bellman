@@ -37,3 +37,11 @@ mod nogpu;
 
 #[cfg(not(feature = "gpu"))]
 pub use self::nogpu::*;
+
+
+#[cfg(feature = "gpu")]	
+use rust_gpu_tools::opencl;
+#[cfg(feature = "gpu")]	
+lazy_static::lazy_static! {	
+    pub static ref GPU_DEVICES: Vec<opencl::Device> = get_devices();
+}
