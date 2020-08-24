@@ -148,12 +148,18 @@ pub mod multicore;
 pub mod multiexp;
 
 pub mod util_cs;
+
+#[cfg(feature = "gpu")]	
+pub use gpu::GPU_DEVICES;	
+
 use ff::{Field, ScalarEngine};
 
 use ahash::AHashMap as HashMap;
 use std::io;
 use std::marker::PhantomData;
 use std::ops::{Add, Sub};
+
+
 
 const BELLMAN_VERSION: &str = env!("CARGO_PKG_VERSION");
 
